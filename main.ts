@@ -1,12 +1,7 @@
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSprite) {
-    let mySprite: Sprite = null
     info.changeScoreBy(1)
-    dog.setPosition(70, 26)
-    music.powerUp.playUntilDone()
-    mySprite.startEffect(effects.spray)
-    otherSprite.destroy()
+    music.baDing.play()
 })
-let dog: Sprite = null
 let iceCream1 = sprites.create(img`
     . . . . . 3 3 b 3 3 d d 3 3 . . 
     . . . . 3 1 1 d 3 d 1 1 1 1 3 . 
@@ -45,7 +40,7 @@ let iceCream2 = sprites.create(img`
     . . 4 4 4 . . . . . . . . . . . 
     `, SpriteKind.Food)
 iceCream2.setPosition(133, 102)
-dog = sprites.create(img`
+let dog = sprites.create(img`
     . . 4 4 4 . . . . 4 4 4 . . . . 
     . 4 5 5 5 e . . e 5 5 5 4 . . . 
     4 5 5 5 5 5 e e 5 5 5 5 5 4 . . 
