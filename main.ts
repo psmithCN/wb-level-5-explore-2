@@ -1,7 +1,15 @@
+info.onCountdownEnd(function () {
+    game.over(true)
+})
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
     info.changeScoreBy(-1)
+    music.zapped.play()
+    dog.say("Oh no!!")
+    ghost.setPosition(129, 98)
 })
-let dog = sprites.create(img`
+let ghost: Sprite = null
+let dog: Sprite = null
+dog = sprites.create(img`
     . . 4 4 4 . . . . 4 4 4 . . . . 
     . 4 5 5 5 e . . e 5 5 5 4 . . . 
     4 5 5 5 5 5 e e 5 5 5 5 5 4 . . 
@@ -20,7 +28,7 @@ let dog = sprites.create(img`
 dog.setPosition(70, 26)
 controller.moveSprite(dog)
 dog.setStayInScreen(true)
-let ghost = sprites.create(img`
+ghost = sprites.create(img`
     ........................
     ........................
     ........................
